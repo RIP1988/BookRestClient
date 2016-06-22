@@ -74,9 +74,6 @@ public class BookController {
 	
 	@FXML
 	private ComboBox<Status> statusField;
-	
-	/*@FXML
-	private TextField idField;*/
 
 	@FXML
 	private Button searchButton;
@@ -199,9 +196,7 @@ public class BookController {
 		/*
 		 * Make the Search button inactive when the Title field is empty.
 		 */
-		addButton.disableProperty().bind(titleField.textProperty().isEmpty());
-		addButton.disableProperty().bind(authorField.textProperty().isEmpty());
-		addButton.disableProperty().bind(statusField.valueProperty().isEqualTo(Status.ANY));
+		addButton.disableProperty().bind(titleField.textProperty().isEmpty().and(authorField.textProperty().isEmpty().and(statusField.valueProperty().isEqualTo(Status.ANY))));
 	}
 	private void initializeResultTable() {
 		/*
@@ -282,7 +277,7 @@ public class BookController {
         httpConnection.setDoOutput(true);
         httpConnection.setRequestMethod("POST");
         httpConnection.setRequestProperty("Content-Type", "application/json");
-	 
+        
         String jsonString = parser.toJsonString(model.getTitle(),
 				model.getAuthor(),
 				model.getStatus().toStatusVO());
@@ -291,6 +286,7 @@ public class BookController {
         output.write(jsonString.getBytes());
         output.flush(); 
         LOG.debug("Writing JSON finished.");
+        LOG.debug(httpConnection.getResponseCode());
 	}
 
 	private void searchButtonAction() {

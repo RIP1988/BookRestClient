@@ -43,16 +43,6 @@ public class BookSearch {
 		return author;
 	}
 	
-//	public IntegerProperty idProperty() {
-//		return id;
-//	}
-//	public Integer getId() {
-//		return id.get();
-//	}
-//	public void setId(int value) {
-//		id.set(value);
-//	}
-	
 	public ObjectProperty<Status> statusProperty() {
 		return status;
 	}

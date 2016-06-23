@@ -223,6 +223,7 @@ public class BookController {
 		/*
 		 * When table's row gets selected say given person's name.
 		 */
+		// REV: kod do usuniecia
 //		resultTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<PersonVO>() {
 //
 //			@Override
@@ -269,6 +270,7 @@ public class BookController {
 	
 	@FXML
 	private void addButtonAction(ActionEvent event) throws IOException {
+		// REV: ten kod powinien byc umieszczony w DataProviderze i wykonany w watku w tle
 		JSONParserImpl parser = new JSONParserImpl();
 		LOG.debug("'Add' button clicked");
 		final String targetURL = "http://localhost:8080/webstore/add";
@@ -286,6 +288,7 @@ public class BookController {
         output.write(jsonString.getBytes());
         output.flush(); 
         LOG.debug("Writing JSON finished.");
+        // REV: powinienes sprawdzic co zwrocil server
         LOG.debug(httpConnection.getResponseCode());
 	}
 

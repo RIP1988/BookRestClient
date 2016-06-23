@@ -17,6 +17,7 @@ public class JSONParserImpl implements JSONParser{
 	@Override
 	public List<BookVO> toBookVO(String stringJSON) {
 		 LOG.debug("pars1. String: " + stringJSON);
+		 // REV: ten obiekt powinien byc zdefiniowany jako atrybut klasy i tworzony tylko raz
 		 Gson gson = new Gson();
 		 LOG.debug("pars2");
 		 List<BookVO> booksCollection = new ArrayList<BookVO>();
@@ -38,6 +39,7 @@ public class JSONParserImpl implements JSONParser{
 	@Override
 	public String toJsonString(String title, String author, StatusVO status) {
 		LOG.debug("Enter toJsonString method.");
+		// REV: j.w.
 		Gson gson = new Gson();
 		BookVO book = new BookVO(title, author, status);
 		String jsonInString = gson.toJson(book);

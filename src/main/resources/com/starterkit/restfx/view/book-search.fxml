@@ -37,6 +37,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+    	<!-- REV: tylko jeden przycisk powinien byc domyslny -->
   		<Button fx:id="searchButton" defaultButton="true" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" onAction="#searchButtonAction" text="%button.search" GridPane.columnIndex="0"/>
   		<Button fx:id="addButton" defaultButton="true" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" onAction="#addButtonAction" text="%button.add" GridPane.columnIndex="1"/>  	
     </children>

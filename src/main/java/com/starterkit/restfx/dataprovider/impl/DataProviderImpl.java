@@ -21,6 +21,7 @@ public class DataProviderImpl implements DataProvider {
 
 	private static final Logger LOG = Logger.getLogger(DataProviderImpl.class);
 
+	// REV: nieuzywane pola
 	/**
 	 * Delay (in ms) for method calls.
 	 */
@@ -35,6 +36,7 @@ public class DataProviderImpl implements DataProvider {
 	@Override
 	public List<BookVO> findBooks(String title, String author, StatusVO status) {
 		LOG.debug("find1");
+		// REV: ten obiekt powinien byc zdefiniowany jako atrybut w klasie i tworzony tylko raz
 		JSONParserImpl jsonParser = new JSONParserImpl();
 		List<BookVO> result = new ArrayList<BookVO>();
 		String wantedTitle = "";
@@ -49,10 +51,12 @@ public class DataProviderImpl implements DataProvider {
 		LOG.debug("find2");
 		String targetURL;
 		if (status == null) {
+			// REV: adres powinien byc pobrany z konfiguracji
 			targetURL = "http://localhost:8080/webstore/bookAuthorTitle?author=" + (String)wantedAuthor
 					+ "&title=" + (String)wantedTitle;
 		}
 		else {
+			// REV: j.w.
 			targetURL = "http://localhost:8080/webstore/bookAuthorTitleStatus?author=" + (String)wantedAuthor
 					+ "&title=" + (String)wantedTitle + "&status=" + status.name();
 		}
@@ -61,12 +65,14 @@ public class DataProviderImpl implements DataProvider {
 		LOG.debug("spytany URL: " + targetURL);
 		try {
 			 LOG.debug("find4");
+			 // REV: lepiej uzyc jakiegos frameworka do RESTow
 			            URL restServiceURL = new URL(targetURL);
 			            HttpURLConnection httpConnection = (HttpURLConnection) restServiceURL.openConnection();
 			            httpConnection.setRequestMethod("GET");
 			            httpConnection.setRequestProperty("Accept", "application/json");
 
 			            if (httpConnection.getResponseCode() != 200) {
+			            	// REV: trzeba rozroznic pusty wynik wyszukiwania od bledu
 			            	return new ArrayList<BookVO>();
 			            }
 			            LOG.debug("find5");
@@ -82,10 +88,14 @@ public class DataProviderImpl implements DataProvider {
 			               // result.add(jsonParser.toBookVO(output));
 			                LOG.debug("Result size: " + result.size());
 			            }
+			            // REV: nie zamykasz polaczenia przy bledzie
 			            httpConnection.disconnect();
 			          } catch (MalformedURLException exept) {
+			        	  // REV: zawsze uzywaj loggera
 			            exept.printStackTrace();
+			            // REV: nalezaloby przekazac wyjatek wyzej
 			          } catch (IOException e) {
+			        	// REV: j.w.
 			            e.printStackTrace();
 			          }
 						return result;

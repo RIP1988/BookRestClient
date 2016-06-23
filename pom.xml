@@ -23,7 +23,7 @@
     <artifactId>gson</artifactId>
     <version>2.2.4</version>
 </dependency>
-    
+    <!-- REV: ta biblioteka nie jest wykorzystywana w projekcie -->
     <dependency>
     	<groupId>org.jboss.resteasy</groupId>
     	<artifactId>resteasy-jaxrs</artifactId>
@@ -34,6 +34,7 @@
 	    <artifactId>unirest-java</artifactId>
 	    <version>1.4.9</version>
 	</dependency>
+	<!-- REV: te zaleznosci sa automatycznie dodawane przez Mavena, tzw. zaleznosci tranzytywne -->
 	<dependency>
 	  <groupId>org.apache.httpcomponents</groupId>
 	  <artifactId>httpclient</artifactId>

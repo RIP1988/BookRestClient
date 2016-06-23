@@ -20,6 +20,7 @@ public class BookVO {
 		this.status = status;
 	}
 
+	// REV: kod do usuniecia
 //	public Long getId() {
 //		return id;
 //	}

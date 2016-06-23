@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 public class BookSearch {
 	private final StringProperty title = new SimpleStringProperty();
 	private final StringProperty author = new SimpleStringProperty();
+	// REV: nie ma dostepu do tego atrybutu
 	private final IntegerProperty id = new SimpleIntegerProperty();
 	private final ObjectProperty<Status> status = new SimpleObjectProperty<>();
 	private final ListProperty<BookVO> result = new SimpleListProperty<>(
